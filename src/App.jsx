@@ -23,9 +23,10 @@ import {
   Layers,
   Crosshair,
 } from 'lucide-react';
+import avatarImage from './assets/ThaiTaka.jpg';
 
 const EMAIL = 'lethanhthai0805@gmail.com';
-const AVATAR_URL = 'https://graph.facebook.com/100083232824368/picture?type=large';
+const AVATAR_URL = avatarImage;
 
 const NAV_LINKS = [
   { id: 'about', label: 'About' },
