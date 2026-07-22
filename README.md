@@ -1,16 +1,30 @@
-# React + Vite
+# TakaVision
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portfolio cá nhân của **Lê Thành Thái (Taka)** — AI & Machine Learning Developer, Creative Web & Game Developer.
 
-Currently, two official plugins are available:
+Dark/glassmorphism, lấy cảm hứng từ giao diện "detection HUD" của các hệ thống thị giác máy tính (bounding box, confidence score) — gắn với chuyên môn Computer Vision / YOLOv8 của tác giả.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- [Vite](https://vite.dev/) + [React 19](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [lucide-react](https://lucide.dev/) cho icon
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Chạy dự án
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # build production vào dist/
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Cấu trúc
+
+- `src/App.jsx` — toàn bộ giao diện portfolio (navbar, hero, about, skills, projects, contact) trong một component.
+- `tailwind.config.js` — bảng màu (`void`, `violet`, `teal`) và font (serif/sans/mono) tuỳ biến.
+
+## Liên hệ
+
+- GitHub: [ThaiTaka](https://github.com/ThaiTaka)
+- Facebook: [thai.taka.2024](https://www.facebook.com/thai.taka.2024/)
+- Zalo: 0899 034 349
