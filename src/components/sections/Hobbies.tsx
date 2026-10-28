@@ -1,41 +1,39 @@
-import { hobbies, hobbiesIntro } from '../../data/hobbies'
-import { Reveal } from '../common/Reveal'
+import { hobbies } from '../../data/hobbies'
+import { ui } from '../../data/ui'
 import { HobbyIcon } from '../common/HobbyIcon'
+import { Reveal } from '../common/Reveal'
+import { SectionHeading } from '../common/SectionHeading'
 
-/** Compact editorial strip shown inside the About section. Cards are informational, not links. */
+/** Independent section. Cards are informational only — they are not links or buttons. */
 export function Hobbies() {
   return (
-    <div className="container-x mt-20 md:mt-28" aria-labelledby="hobbies-title">
-      <Reveal>
-        <div className="grid gap-6 md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] md:items-end md:gap-16">
-          <div>
-            <p className="eyebrow mb-4">Personal interests</p>
-            <h3 id="hobbies-title" className="font-display text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-tight">
-              When I'm not <em className="font-display-italic pr-1">coding</em>
-            </h3>
-          </div>
-          <p className="text-base leading-relaxed text-white/70">{hobbiesIntro}</p>
-        </div>
-      </Reveal>
+    <section id="hobbies" aria-labelledby="hobbies-title" className="section-pad !pt-8 md:!pt-12">
+      <div className="container-x">
+        <SectionHeading id="hobbies-title" eyebrow={ui.hobbies.eyebrow}>
+          <em>Sở thích</em> cá nhân
+        </SectionHeading>
 
-      <ul className="mt-10 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-5">
-        {hobbies.map((h, i) => (
-          <li key={h.id} className="min-[420px]:last:col-span-2 lg:last:col-span-1">
-            <Reveal delay={i * 0.06} className="h-full">
-              <div className="gradient-outline group h-full rounded-3xl border border-stroke bg-surface p-5 transition-transform duration-300 hover:-translate-y-1 md:p-6">
-                <span className="inline-block text-[#89aacc] transition-colors duration-300 group-hover:text-[#4e85bf]">
-                  <HobbyIcon name={h.icon} />
-                </span>
-                <p className="mt-6 text-lg font-medium">{h.label}</p>
-                <p lang="vi" className="text-xs uppercase tracking-[0.18em] text-muted">
-                  {h.vi}
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/65">{h.description}</p>
-              </div>
-            </Reveal>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <Reveal>
+          <p className="font-display-italic text-2xl text-white/90 md:text-3xl">{ui.hobbies.subtitle}</p>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/70 md:text-lg">{ui.hobbies.intro}</p>
+        </Reveal>
+
+        <ul className="mt-10 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 md:gap-4 lg:grid-cols-5">
+          {hobbies.map((h, i) => (
+            <li key={h.id} className={i === hobbies.length - 1 ? 'min-[420px]:col-span-2 lg:col-span-1' : ''}>
+              <Reveal delay={i * 0.05} className="h-full">
+                <div className="gradient-outline group h-full rounded-3xl border border-stroke bg-surface p-6 transition-transform duration-300 hover:-translate-y-1 md:p-7">
+                  <span className="inline-block text-[#89aacc] transition-colors duration-300 group-hover:text-[#4e85bf]">
+                    <HobbyIcon name={h.icon} />
+                  </span>
+                  <h3 className="mt-6 text-xl font-medium">{h.label}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">{h.description}</p>
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   )
 }

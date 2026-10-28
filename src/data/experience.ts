@@ -1,71 +1,80 @@
-import type { ExperienceItem, NoteItem } from '../types/portfolio'
+import type { Education, NoteItem, TimelineItem } from '../types/portfolio'
 
-export const experience: ExperienceItem[] = [
+export const education: Education = {
+  school: 'Đại học Đà Lạt',
+  major: 'Công nghệ Thông tin',
+  status: 'Sinh viên',
+  points: [
+    'Học tập và thực hiện dự án phần mềm, nghiên cứu ứng dụng AI',
+    'Tham gia các cuộc thi học thuật và khởi nghiệp đổi mới sáng tạo',
+  ],
+}
+
+export const experience: TimelineItem[] = [
   {
-    period: '2023 — Present',
-    title: 'STEM Educator / Teaching Assistant',
-    org: 'STEM education',
-    body: 'Teaching and supporting hands-on technology learning for young students.',
+    period: '2023 – nay',
+    title: 'Giảng dạy / Trợ giảng STEM',
+    org: 'Giáo dục STEM',
+    body: 'Giảng dạy và hỗ trợ học sinh làm quen với công nghệ qua các hoạt động thực hành.',
     points: [
-      'Programming with Python and Pygame',
-      'Micro:bit and introductory hardware',
-      'Computational thinking through projects',
+      'Lập trình Python và Pygame',
+      'Micro:bit và phần cứng cơ bản',
+      'Rèn luyện tư duy máy tính qua dự án',
     ],
   },
   {
-    period: 'University',
-    title: 'Information Technology',
-    org: 'Da Lat University',
-    body: 'Coursework, team projects and competitions in software engineering.',
+    period: '2026',
+    title: 'Thành viên nhóm dự án eParking',
+    org: 'Cuộc thi Khởi nghiệp đổi mới sáng tạo tỉnh Lâm Đồng',
+    body: 'Tham gia nhóm phát triển hệ thống quản lý bãi xe thông minh; dự án đạt Giải Nhất.',
     points: [
-      'Information security competition — Third Prize, team mYth00s (2026)',
-      'Lam Dong innovation competition — First Prize with the eParking team (2026)',
-      'Student research on AI and machine learning applications',
+      'Hệ thống nhận diện biển số bằng YOLO và EasyOCR',
+      'Quản lý ví, thanh toán và bảng điều khiển quản trị',
     ],
   },
   {
-    period: 'Ongoing',
-    title: 'Research & Engineering',
-    org: 'Personal and academic projects',
-    body: 'Projects where software meets a practical problem.',
+    period: 'Liên tục',
+    title: 'Phát triển phần mềm và nghiên cứu',
+    org: 'Dự án học thuật và cá nhân',
+    body: 'Xây dựng các sản phẩm giải quyết vấn đề thực tế và thử nghiệm các hướng nghiên cứu.',
     points: [
-      'High Utility Itemset Mining applied to indoor positioning (HUIM-IPS)',
-      'Automatic licence-plate recognition with YOLO and EasyOCR in eParking',
-      'Offline-first farm logbook with on-device speech recognition (AgriXAI-Farmer)',
+      'Khai phá tập mục tiện ích cao cho định vị trong nhà (HUIM-IPS-)',
+      'Ứng dụng ghi chép nông hộ offline-first (AgriXAI-Farmer)',
+      'Nền tảng học tập: ReadMateAI và DYE-LMS; trò chơi The-Call-Beneath',
     ],
   },
 ]
 
 /**
- * No articles have been published, so this section links to real documents that
- * live in the project repositories instead of inventing posts or dates.
+ * Chưa có bài viết nào được công bố, nên mục này dẫn tới các tài liệu thật nằm trong kho mã
+ * thay vì bịa bài viết hay ngày đăng.
  */
 export const notes: NoteItem[] = [
   {
-    title: 'Literature review: HUIM for indoor positioning',
-    category: 'Research',
-    description: 'Prior-art survey behind the HUIM-IPS adaptation study.',
+    title: 'Tổng quan tài liệu: HUIM cho định vị trong nhà',
+    category: 'Nghiên cứu',
+    description: 'Khảo sát các công trình trước đó làm nền cho bài tìm hiểu HUIM-IPS-.',
     href: 'https://github.com/ThaiTaka/HUIM-IPS-/blob/main/research/literature_review.md',
-    source: 'HUIM-IPS',
+    source: 'HUIM-IPS-',
   },
   {
-    title: 'Architecture of an auto-graded programming LMS',
-    category: 'Engineering',
-    description: 'How DYE-LMS is structured, from lesson data to the grading sandbox.',
+    title: 'Kiến trúc hệ thống LMS chấm bài tự động',
+    category: 'Kỹ thuật',
+    description: 'Cách DYE-LMS được tổ chức, từ dữ liệu giáo án đến hộp cát chấm bài.',
     href: 'https://github.com/ThaiTaka/DYE-LMS/blob/main/docs/01-ARCHITECTURE.md',
     source: 'DYE-LMS',
   },
   {
-    title: 'Designing the ReadMateAI exercise engine',
-    category: 'Education',
-    description: 'Rule-based exercise generation for first-grade Vietnamese reading.',
+    title: 'Thiết kế bộ máy bài tập của ReadMateAI',
+    category: 'Giáo dục',
+    description: 'Cách sinh bài tập theo quy tắc cho môn Tiếng Việt lớp 1.',
     href: 'https://github.com/ThaiTaka/ReadMateAI/blob/main/docs/EXERCISE_ENGINE.md',
     source: 'ReadMateAI',
   },
   {
-    title: 'Decision record: Lam Dong crop data',
-    category: 'Data',
-    description: 'Why and how the AgriLog crop catalogue is sourced.',
+    title: 'Quyết định thiết kế: dữ liệu cây trồng Lâm Đồng',
+    category: 'Dữ liệu',
+    description: 'Vì sao và bằng cách nào danh mục cây trồng của AgriLog có nguồn rõ ràng.',
     href: 'https://github.com/ThaiTaka/AgriXAI-Farmer/blob/main/docs/adr/0009-du-lieu-lam-dong.md',
     source: 'AgriXAI-Farmer',
   },

@@ -12,12 +12,11 @@
     "test:e2e": "node scripts/e2e.mjs"
   },
   "dependencies": {
-    "gsap": "^3.15.0",
-    "hls.js": "^1.7.3",
     "lucide-react": "^1.25.0",
     "motion": "^14.7.1",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "simple-icons": "^16.36.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

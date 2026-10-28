@@ -1,41 +1,52 @@
+import { FlaskConical, GraduationCap, Medal, type LucideIcon } from 'lucide-react'
 import { achievements } from '../../data/achievements'
+import { ui } from '../../data/ui'
+import type { Achievement, AchievementKind } from '../../types/portfolio'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
 
+const kindIcon: Record<AchievementKind, LucideIcon> = { prize: Medal, research: FlaskConical, teaching: GraduationCap }
+
+// Group by year, keeping the data order inside each year.
+const groups = achievements.reduce<{ year: string; items: Achievement[] }[]>((acc, a) => {
+  const g = acc.find((x) => x.year === a.year)
+  if (g) g.items.push(a)
+  else acc.push({ year: a.year, items: [a] })
+  return acc
+}, [])
+
 export function Achievements() {
   return (
-    <section id="awards" aria-labelledby="awards-title" className="section-pad">
+    <section id="awards" aria-labelledby="awards-title" className="section-pad !pt-8 md:!pt-12">
       <div className="container-x">
-        <SectionHeading
-          id="awards-title"
-          eyebrow="Achievements & recognition"
-          sub="Competitions, research and teaching, in the order they happened."
-        >
-          Milestones that <em>matter</em>.
+        <SectionHeading id="awards-title" eyebrow={ui.awards.eyebrow} sub={ui.awards.sub}>
+          <em>Thành tích</em> &amp; giải thưởng
         </SectionHeading>
 
-        <ol className="grid gap-4 md:grid-cols-2">
-          {achievements.map((a) => (
-            <li key={`${a.year}-${a.title}`}>
-              <Reveal className="h-full">
-                <article className="group flex h-full flex-col gap-5 rounded-3xl border border-stroke bg-surface p-6 transition-colors hover:border-white/20 md:p-8">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <p className="font-display-italic text-5xl leading-none md:text-6xl">{a.year}</p>
-                    <span className="rounded-full border border-white/15 px-3 py-1 text-[0.7rem] uppercase tracking-[0.2em] text-muted">
-                      {a.tag}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-medium leading-snug md:text-xl">{a.title}</h3>
-                    <p lang="vi" className="mt-2 text-sm leading-relaxed text-muted">
-                      {a.vi}
-                    </p>
-                  </div>
-                  {a.note && (
-                    <p className="accent-gradient-text mt-auto text-sm font-medium">{a.note}</p>
-                  )}
-                </article>
-              </Reveal>
+        <ol className="divide-y divide-stroke rounded-3xl border border-stroke bg-surface">
+          {groups.map((g) => (
+            <li key={g.year} className="grid gap-4 p-5 md:grid-cols-[8rem_minmax(0,1fr)] md:gap-8 md:p-8">
+              <p className="font-display-italic text-4xl leading-none text-white/90 md:text-5xl">{g.year}</p>
+              <ul className="space-y-5">
+                {g.items.map((a) => {
+                  const Icon = kindIcon[a.kind]
+                  return (
+                    <li key={a.title} className="flex gap-4">
+                      <span className="mt-0.5 grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/5 text-[#89aacc]">
+                        <Icon size={20} aria-hidden="true" />
+                      </span>
+                      <Reveal className="min-w-0">
+                        <p className="eyebrow !text-[0.7rem]">
+                          {ui.awards.kind[a.kind]}
+                          {a.level ? ` · ${a.level}` : ''}
+                        </p>
+                        <h3 className="mt-1 text-base font-medium leading-snug md:text-lg">{a.title}</h3>
+                        {a.note && <p className="accent-gradient-text mt-1.5 text-sm font-medium">{a.note}</p>}
+                      </Reveal>
+                    </li>
+                  )
+                })}
+              </ul>
             </li>
           ))}
         </ol>

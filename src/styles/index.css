@@ -10,7 +10,8 @@
   --stroke: 0 0% 12%;
   --accent: 0 0% 96%;
   --font-body: 'Inter', sans-serif;
-  --font-display: 'Instrument Serif', serif;
+  /* Instrument Serif lacks ~96 Vietnamese glyphs (ề, ệ, ả, ự, ỹ…); Newsreader covers all of them. */
+  --font-display: 'Newsreader', Georgia, serif;
   --accent-gradient: linear-gradient(90deg, #89aacc 0%, #4e85bf 100%);
   color-scheme: dark;
 }
@@ -25,6 +26,7 @@
     background: hsl(var(--bg));
     color: hsl(var(--text));
     font-family: var(--font-body);
+    font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
@@ -66,10 +68,10 @@
     @apply text-[0.7rem] uppercase tracking-[0.3em] text-muted;
   }
   .section-pad {
-    @apply px-5 py-24 sm:px-8 md:py-32 lg:px-12;
+    @apply px-5 py-14 sm:px-8 md:py-20 lg:px-12;
   }
   .container-x {
-    @apply mx-auto w-full max-w-[1400px];
+    @apply mx-auto w-full max-w-[1180px];
   }
   /* Animated gradient outline revealed on hover / focus for pill buttons */
   .gradient-outline {
@@ -95,16 +97,6 @@
   .gradient-outline:focus-visible::before {
     opacity: 1;
     animation: gradient-shift 6s ease infinite;
-  }
-  .halftone::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.2px);
-    background-size: 5px 5px;
-    mix-blend-mode: overlay;
-    opacity: 0.35;
-    pointer-events: none;
   }
 }
 

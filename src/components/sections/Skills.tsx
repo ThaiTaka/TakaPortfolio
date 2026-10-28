@@ -1,105 +1,106 @@
-import { useId, useRef, useState, type KeyboardEvent } from 'react'
-import { skillGroups } from '../../data/skills'
+import { Brain, Code2, LayoutDashboard, Server, Smartphone, Wrench, type LucideIcon } from 'lucide-react'
+import { leadLanguages, otherLanguages, skillGroups } from '../../data/skills'
+import { ui } from '../../data/ui'
+import type { GroupIconKey, SkillItem } from '../../types/portfolio'
 import { Reveal } from '../common/Reveal'
 import { SectionHeading } from '../common/SectionHeading'
+import { TechIcon } from '../common/TechIcon'
 
-const lead = [
-  { name: 'Python', note: 'AI/ML, research, tooling, teaching' },
-  { name: 'C#', note: 'Unity and desktop software' },
-  { name: 'C++', note: 'Algorithms and systems practice' },
-]
+const groupIcons: Record<GroupIconKey, LucideIcon> = {
+  code: Code2,
+  layout: LayoutDashboard,
+  server: Server,
+  brain: Brain,
+  smartphone: Smartphone,
+  wrench: Wrench,
+}
 
-export function Skills() {
-  const uid = useId()
-  const [index, setIndex] = useState(0)
-  const tabs = useRef<(HTMLButtonElement | null)[]>([])
-  const group = skillGroups[index]
-
-  const onKey = (e: KeyboardEvent) => {
-    const last = skillGroups.length - 1
-    let next = index
-    if (e.key === 'ArrowRight') next = index === last ? 0 : index + 1
-    else if (e.key === 'ArrowLeft') next = index === 0 ? last : index - 1
-    else if (e.key === 'Home') next = 0
-    else if (e.key === 'End') next = last
-    else return
-    e.preventDefault()
-    setIndex(next)
-    tabs.current[next]?.focus()
-  }
-
+function Chip({ item }: { item: SkillItem }) {
   return (
-    <section id="skills" aria-labelledby="skills-title" className="section-pad">
+    <li className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-3 py-1.5 text-sm text-white/85">
+      {item.icon && (
+        <span className="text-[#89aacc]">
+          <TechIcon name={item.icon} size={16} />
+        </span>
+      )}
+      {item.name}
+    </li>
+  )
+}
+
+/** Every skill group is visible at once — no tabs, accordions or carousels. */
+export function Skills() {
+  return (
+    <section id="skills" aria-labelledby="skills-title" className="section-pad !pt-8 md:!pt-12">
       <div className="container-x">
-        <SectionHeading
-          id="skills-title"
-          eyebrow="Technical skills"
-          sub="Self-reported strengths, grouped by what I actually build with them. No fake percentage bars."
-        >
-          A toolkit for <em>building</em>
+        <SectionHeading id="skills-title" eyebrow={ui.skills.eyebrow} sub={ui.skills.sub}>
+          <em>Kỹ năng</em> chuyên môn
         </SectionHeading>
 
-        <ul className="mb-14 grid gap-4 md:grid-cols-3">
-          {lead.map((l, i) => (
-            <li key={l.name}>
-              <Reveal delay={i * 0.08}>
-                <div className="group relative overflow-hidden rounded-3xl border border-stroke bg-surface p-7 transition-colors hover:border-white/20 md:p-6 lg:p-9">
-                  <p className="eyebrow mb-6">Strongest</p>
-                  <p className="font-display-italic accent-gradient-text pr-2 text-5xl leading-none lg:text-7xl">{l.name}</p>
-                  <p className="mt-5 text-sm text-muted">{l.note}</p>
-                </div>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-
+        {/* Languages: Python, C# and C++ lead */}
         <Reveal>
-          <div role="tablist" aria-label="Skill categories" onKeyDown={onKey} className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
-            {skillGroups.map((g, i) => (
-              <button
-                key={g.id}
-                ref={(el) => {
-                  tabs.current[i] = el
-                }}
-                role="tab"
-                id={`${uid}-tab-${g.id}`}
-                aria-selected={i === index}
-                aria-controls={`${uid}-panel`}
-                tabIndex={i === index ? 0 : -1}
-                onClick={() => setIndex(i)}
-                className={`min-h-11 shrink-0 rounded-full border px-5 text-sm transition-colors ${
-                  i === index ? 'border-transparent bg-text-primary text-bg' : 'border-white/15 text-muted hover:text-text-primary'
-                }`}
-              >
-                {g.title}
-              </button>
-            ))}
-          </div>
-
-          <div
-            role="tabpanel"
-            id={`${uid}-panel`}
-            aria-labelledby={`${uid}-tab-${group.id}`}
-            className="mt-6 rounded-3xl border border-stroke bg-surface p-6 md:p-10"
-          >
-            <p className="max-w-xl text-base text-white/70 md:text-lg">{group.blurb}</p>
-            <ul className="mt-8 flex flex-wrap gap-2.5 md:gap-3">
-              {group.items.map((item) => {
-                const strong = group.featured?.includes(item)
-                return (
-                  <li
-                    key={item}
-                    className={`rounded-full border px-4 py-2 text-sm transition-colors hover:border-white/40 md:text-base ${
-                      strong ? 'accent-gradient border-transparent font-medium text-bg' : 'border-white/15 text-white/85'
-                    }`}
-                  >
-                    {item}
-                  </li>
-                )
-              })}
+          <div className="rounded-3xl border border-stroke bg-surface p-5 md:p-8">
+            <div className="mb-6 flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-[#89aacc]">
+                <Code2 size={20} aria-hidden="true" />
+              </span>
+              <h3 className="text-lg font-medium md:text-xl">Ngôn ngữ lập trình</h3>
+            </div>
+            <ul className="grid gap-3 md:grid-cols-3">
+              {leadLanguages.map((l) => (
+                <li
+                  key={l.name}
+                  className="relative overflow-hidden rounded-2xl border border-[#4e85bf]/40 bg-gradient-to-br from-[#4e85bf]/15 via-transparent to-transparent p-5"
+                >
+                  <p className="eyebrow !text-[#89aacc]">{ui.skills.strongest}</p>
+                  <div className="mt-3 flex items-center gap-3">
+                    <span className="text-[#89aacc]">
+                      <TechIcon name={l.icon} size={34} />
+                    </span>
+                    <p className="font-display-italic text-4xl leading-none md:text-5xl">{l.name}</p>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-white/70">{l.note}</p>
+                </li>
+              ))}
+            </ul>
+            <h4 className="eyebrow mb-3 mt-6">{ui.skills.otherLanguages}</h4>
+            <ul className="flex flex-wrap gap-2">
+              {otherLanguages.map((o) => (
+                <Chip key={o.name} item={o} />
+              ))}
             </ul>
           </div>
         </Reveal>
+
+        {/* Remaining groups */}
+        <ul className="mt-4 grid gap-4 md:grid-cols-2 md:gap-5">
+          {skillGroups.map((g, i) => {
+            const Icon = groupIcons[g.icon]
+            const last = i === skillGroups.length - 1 && skillGroups.length % 2 === 1
+            return (
+              <li key={g.id} className={last ? 'md:col-span-2' : ''}>
+                <Reveal delay={(i % 2) * 0.06} className="h-full">
+                  <article aria-labelledby={`skill-${g.id}`} className="h-full rounded-3xl border border-stroke bg-surface p-5 md:p-8">
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/5 text-[#89aacc]">
+                        <Icon size={20} aria-hidden="true" />
+                      </span>
+                      <h3 id={`skill-${g.id}`} className="text-lg font-medium md:text-xl">
+                        {g.title}
+                      </h3>
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-muted">{g.blurb}</p>
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {g.items.map((item) => (
+                        <Chip key={item.name} item={item} />
+                      ))}
+                    </ul>
+                  </article>
+                </Reveal>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </section>
   )
