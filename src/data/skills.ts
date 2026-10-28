@@ -80,6 +80,17 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    id: 'stem',
+    title: 'STEM và lập trình giáo dục',
+    icon: 'cpu',
+    blurb: 'Công cụ tôi dùng khi giảng dạy lập trình và điện tử cho học sinh từ năm 2023.',
+    items: [
+      { name: 'Scratch', icon: 'scratch' },
+      { name: 'micro:bit', icon: 'microbit' },
+      { name: 'Arduino', icon: 'arduino' },
+    ],
+  },
+  {
     id: 'tools',
     title: 'Công cụ và quy trình',
     icon: 'wrench',

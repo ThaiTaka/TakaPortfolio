@@ -1,4 +1,4 @@
-import { Brain, Code2, LayoutDashboard, Server, Smartphone, Wrench, type LucideIcon } from 'lucide-react'
+import { Brain, Code2, Cpu, LayoutDashboard, Server, Smartphone, Wrench, type LucideIcon } from 'lucide-react'
 import { leadLanguages, otherLanguages, skillGroups } from '../../data/skills'
 import { ui } from '../../data/ui'
 import type { GroupIconKey, SkillItem } from '../../types/portfolio'
@@ -13,6 +13,7 @@ const groupIcons: Record<GroupIconKey, LucideIcon> = {
   brain: Brain,
   smartphone: Smartphone,
   wrench: Wrench,
+  cpu: Cpu,
 }
 
 function Chip({ item }: { item: SkillItem }) {

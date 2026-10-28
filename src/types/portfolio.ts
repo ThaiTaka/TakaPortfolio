@@ -41,7 +41,7 @@ export type TechIconKey =
   | 'react' | 'nextjs' | 'vite' | 'html5' | 'css' | 'tailwind'
   | 'nodejs' | 'express' | 'fastapi' | 'postgresql' | 'supabase' | 'prisma'
   | 'opencv' | 'scikitlearn' | 'yolo'
-  | 'unity' | 'androidstudio'
+  | 'unity' | 'androidstudio' | 'scratch' | 'microbit' | 'arduino'
   | 'git' | 'github' | 'docker' | 'claude' | 'copilot' | 'gemini' | 'colab'
   | 'jest' | 'vitest' | 'generic'
 
@@ -51,7 +51,7 @@ export interface SkillItem {
   icon?: TechIconKey
 }
 
-export type GroupIconKey = 'code' | 'layout' | 'server' | 'brain' | 'smartphone' | 'wrench'
+export type GroupIconKey = 'code' | 'layout' | 'server' | 'brain' | 'smartphone' | 'wrench' | 'cpu'
 
 export interface SkillGroup {
   id: string
