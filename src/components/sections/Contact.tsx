@@ -1,63 +1,43 @@
-import { useLayoutEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { profile } from '../../data/profile'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
-import { VideoBackground } from '../common/VideoBackground'
-import { AnimatedButton } from '../common/AnimatedButton'
+import { ArrowUpRight } from 'lucide-react'
+import { contactLinks, profile } from '../../data/profile'
+import { ui } from '../../data/ui'
 import { Reveal } from '../common/Reveal'
+import { SectionHeading } from '../common/SectionHeading'
+import { SocialIcon } from '../common/TechIcon'
 import { Footer } from '../layout/Footer'
 
-const MARQUEE = "BUILDING WHAT'S NEXT • "
-
 export function Contact() {
-  const track = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-
-  useLayoutEffect(() => {
-    if (reduced || !track.current) return
-    const ctx = gsap.context(() => {
-      // Content is rendered twice; moving by -50% loops seamlessly.
-      gsap.to(track.current, { xPercent: -50, duration: 40, ease: 'none', repeat: -1 })
-    }, track)
-    return () => ctx.revert()
-  }, [reduced])
-
-  const chunk = MARQUEE.repeat(4)
-
   return (
-    <section id="contact" aria-labelledby="contact-title" className="relative isolate overflow-hidden px-5 pt-28 pb-10 sm:px-8 lg:px-12">
-      <VideoBackground src={profile.videoSrc} flip lazy />
-      <div className="absolute inset-0 bg-black/80" aria-hidden="true" />
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-bg to-transparent" aria-hidden="true" />
+    <section id="contact" aria-labelledby="contact-title" className="section-pad !pb-8 !pt-8 md:!pt-12">
+      <div className="container-x">
+        <SectionHeading id="contact-title" eyebrow={ui.contact.eyebrow} sub={ui.contact.body}>
+          Hãy cùng làm điều <em>có ý nghĩa</em>
+        </SectionHeading>
 
-      <div className="relative z-10 mx-auto max-w-[1400px]">
-        <div className="-mx-5 mb-16 overflow-hidden sm:-mx-8 lg:-mx-12" aria-hidden="true">
-          <div ref={track} className="flex w-max whitespace-nowrap">
-            <span className="font-display-italic pr-4 text-[clamp(4rem,12vw,10rem)] leading-none text-white/10">{chunk}</span>
-            <span className="font-display-italic pr-4 text-[clamp(4rem,12vw,10rem)] leading-none text-white/10">{chunk}</span>
-          </div>
-        </div>
-
-        <Reveal>
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow mb-6">{profile.availability}</p>
-            <h2 id="contact-title" className="font-display text-[clamp(2.75rem,8vw,6rem)] leading-[1] tracking-tight">
-              Let's build something <em className="font-display-italic">meaningful</em>.
-            </h2>
-            <p className="mx-auto mt-6 max-w-xl text-white/65">
-              Projects, research ideas, teaching, or just a conversation about technology — my inbox is open.
-            </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <AnimatedButton href={`mailto:${profile.email}`}>
-                Let's Connect <span aria-hidden="true">↗</span>
-              </AnimatedButton>
-              <AnimatedButton href="https://github.com/ThaiTaka" variant="ghost">
-                GitHub
-              </AnimatedButton>
-            </div>
-            <p className="mt-6 text-sm text-muted">{profile.email}</p>
-          </div>
-        </Reveal>
+        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {contactLinks.map((c, i) => (
+            <li key={c.key}>
+              <Reveal delay={i * 0.05} className="h-full">
+                <a
+                  href={c.href}
+                  {...(c.key === 'email' ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                  className="gradient-outline group flex h-full flex-col gap-4 rounded-3xl border border-stroke bg-surface p-5 transition-transform duration-300 hover:-translate-y-1 md:p-6"
+                >
+                  <span className="flex items-center justify-between text-[#89aacc]">
+                    <SocialIcon name={c.key} />
+                    <ArrowUpRight size={18} className="text-muted transition-colors group-hover:text-text-primary" aria-hidden="true" />
+                  </span>
+                  <span>
+                    <span className="eyebrow block !text-[0.7rem]">{c.label}</span>
+                    <span className="mt-1 block break-all text-sm font-medium text-white/90 md:text-base">{c.value}</span>
+                  </span>
+                  {c.key !== 'email' && <span className="sr-only">(mở trong thẻ mới)</span>}
+                </a>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm text-muted">{ui.contact.availability} Email chính: {profile.email}</p>
 
         <Footer />
       </div>
