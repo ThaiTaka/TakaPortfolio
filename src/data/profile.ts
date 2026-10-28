@@ -16,7 +16,7 @@ export const profile = {
   photo: { sm: '/profile-480.jpg', md: '/profile-768.jpg', full: '/ThaiTaka.jpg' },
   focus: ['Phát triển phần mềm', 'Trí tuệ nhân tạo', 'Lập trình Full-stack', 'Nghiên cứu thuật toán', 'Giáo dục STEM'],
   intro:
-    'Tôi là Lê Thành Thái, sinh viên Công nghệ Thông tin tại Đại học Đà Lạt. Tôi tập trung phát triển phần mềm, ứng dụng trí tuệ nhân tạo và xây dựng các giải pháp công nghệ thực tiễn. Từ năm 2023, tôi cũng tham gia giảng dạy STEM.',
+    'Tôi là Lê Thành Thái, sinh viên Công nghệ Thông tin tại Đại học Đà Lạt. Tôi tập trung phát triển phần mềm, ứng dụng trí tuệ nhân tạo và xây dựng các giải pháp công nghệ thực tiễn. Từ năm 2023, tôi cũng giảng dạy STEM và lập trình Python, Pygame.',
   /** Set a path (e.g. '/CV_LeThanhThai.pdf') once a real PDF exists in /public to show the download button. */
   cvPdf: null as string | null,
 } as const

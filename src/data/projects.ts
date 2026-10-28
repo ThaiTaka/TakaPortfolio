@@ -90,6 +90,28 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'hand-tracking',
+    repo: 'Hand-Tracking-main',
+    name: 'Hand-Tracking-main',
+    category: 'Thị giác máy tính · Tương tác Unity',
+    tagline: 'Theo dõi bàn tay bằng webcam và đưa chuyển động vào Unity qua UDP.',
+    role: 'Phát triển dự án (kho mã cá nhân trên GitHub)',
+    problem: 'Dùng webcam thông thường để nhận biết chuyển động bàn tay và đưa dữ liệu đó vào một ứng dụng Unity.',
+    solution:
+      'Script Python dùng OpenCV, cvzone và MediaPipe đọc webcam, lấy tọa độ 21 điểm mốc của một bàn tay rồi gửi qua UDP socket (127.0.0.1:5052). Script C# trong Unity nhận dữ liệu và đặt vị trí các điểm bàn tay 3D tương ứng.',
+    features: [
+      'Nhận diện một bàn tay với 21 điểm mốc (x, y, z)',
+      'Truyền dữ liệu Python → Unity qua UDP socket cục bộ',
+      'Script UDPReceive chạy luồng riêng để nhận dữ liệu trong Unity',
+      'Có hướng dẫn tạo môi trường ảo và cài thư viện',
+    ],
+    status: 'Dự án nhỏ tạo tháng 8/2024, gồm một script Python và các script C# cho Unity. Kho mã không có ảnh chụp hay bản demo.',
+    stack: ['Python', 'OpenCV', 'cvzone', 'MediaPipe', 'C#', 'Unity', 'UDP socket'],
+    links: [{ label: 'Xem trên GitHub', href: gh('Hand-Tracking-main') }],
+    images: [],
+    cover: { glyph: '×21' },
+  },
+  {
     id: 'the-call-beneath',
     repo: 'The-Call-Beneath',
     name: 'The-Call-Beneath',

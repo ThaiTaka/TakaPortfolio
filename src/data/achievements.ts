@@ -16,8 +16,8 @@ export const achievements: Achievement[] = [
   },
   {
     year: '2023',
-    title: 'Bắt đầu giảng dạy STEM',
-    note: 'Tiếp tục đến nay — lập trình và thực hành công nghệ cho học sinh.',
+    title: 'Bắt đầu giảng dạy STEM và lập trình Python, Pygame',
+    note: 'Tiếp tục đến nay — vừa dạy STEM vừa dạy lập trình Python và Pygame.',
     kind: 'teaching',
   },
   {

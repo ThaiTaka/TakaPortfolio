@@ -40,7 +40,7 @@ export const ui = {
   projects: {
     eyebrow: 'Dự án tiêu biểu',
     title: 'Dự án',
-    sub: 'Năm dự án phần mềm, nghiên cứu, giáo dục và trò chơi tôi đã tham gia xây dựng. Thông tin lấy từ chính kho mã trên GitHub.',
+    sub: 'Sáu dự án phần mềm, nghiên cứu, giáo dục và trò chơi tôi đã tham gia xây dựng. Thông tin lấy từ chính kho mã trên GitHub.',
     role: 'Vai trò',
     problem: 'Bài toán',
     solution: 'Giải pháp',

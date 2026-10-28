@@ -13,11 +13,11 @@ export const education: Education = {
 export const experience: TimelineItem[] = [
   {
     period: '2023 – nay',
-    title: 'Giảng dạy / Trợ giảng STEM',
+    title: 'Giảng dạy STEM và lập trình Python, Pygame',
     org: 'Giáo dục STEM',
-    body: 'Giảng dạy và hỗ trợ học sinh làm quen với công nghệ qua các hoạt động thực hành.',
+    body: 'Vừa giảng dạy STEM vừa dạy lập trình Python và Pygame cho học sinh thông qua các hoạt động thực hành.',
     points: [
-      'Lập trình Python và Pygame',
+      'Dạy lập trình Python và làm game với Pygame',
       'Scratch, micro:bit và Arduino',
       'Rèn luyện tư duy máy tính qua dự án',
     ],
