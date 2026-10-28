@@ -18,7 +18,7 @@ export const experience: TimelineItem[] = [
     body: 'Giảng dạy và hỗ trợ học sinh làm quen với công nghệ qua các hoạt động thực hành.',
     points: [
       'Lập trình Python và Pygame',
-      'Micro:bit và phần cứng cơ bản',
+      'Scratch, micro:bit và Arduino',
       'Rèn luyện tư duy máy tính qua dự án',
     ],
   },
@@ -40,7 +40,7 @@ export const experience: TimelineItem[] = [
     points: [
       'Khai phá tập mục tiện ích cao cho định vị trong nhà (HUIM-IPS-)',
       'Ứng dụng ghi chép nông hộ offline-first (AgriXAI-Farmer)',
-      'Nền tảng học tập: ReadMateAI và DYE-LMS; trò chơi The-Call-Beneath',
+      'Nền tảng học tập ReadMateAI; trò chơi The-Call-Beneath',
     ],
   },
 ]
@@ -56,13 +56,6 @@ export const notes: NoteItem[] = [
     description: 'Khảo sát các công trình trước đó làm nền cho bài tìm hiểu HUIM-IPS-.',
     href: 'https://github.com/ThaiTaka/HUIM-IPS-/blob/main/research/literature_review.md',
     source: 'HUIM-IPS-',
-  },
-  {
-    title: 'Kiến trúc hệ thống LMS chấm bài tự động',
-    category: 'Kỹ thuật',
-    description: 'Cách DYE-LMS được tổ chức, từ dữ liệu giáo án đến hộp cát chấm bài.',
-    href: 'https://github.com/ThaiTaka/DYE-LMS/blob/main/docs/01-ARCHITECTURE.md',
-    source: 'DYE-LMS',
   },
   {
     title: 'Thiết kế bộ máy bài tập của ReadMateAI',

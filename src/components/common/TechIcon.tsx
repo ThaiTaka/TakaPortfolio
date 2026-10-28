@@ -3,7 +3,7 @@ import {
   siAndroidstudio, siCplusplus, siCss, siDocker, siExpress, siFastapi, siGit, siGithub, siGithubcopilot,
   siGooglecolab, siGooglegemini, siHtml5, siJavascript, siJest, siNextdotjs, siNodedotjs, siOpencv,
   siOpenjdk, siPostgresql, siPrisma, siPython, siReact, siScikitlearn, siSupabase, siTailwindcss,
-  siTypescript, siUltralytics, siUnity, siVite, siVitest, siClaude, siFacebook, siZalo, siGmail,
+  siTypescript, siUltralytics, siScratch, siMicrobit, siArduino, siUnity, siVite, siVitest, siClaude, siFacebook, siZalo, siGmail,
 } from 'simple-icons'
 import type { SocialKey, TechIconKey } from '../../types/portfolio'
 
@@ -16,6 +16,7 @@ const paths: Record<Exclude<TechIconKey, 'csharp' | 'generic'>, string> = {
   androidstudio: siAndroidstudio.path, git: siGit.path, github: siGithub.path, docker: siDocker.path,
   claude: siClaude.path, copilot: siGithubcopilot.path, gemini: siGooglegemini.path, colab: siGooglecolab.path,
   jest: siJest.path, vitest: siVitest.path,
+  scratch: siScratch.path, microbit: siMicrobit.path, arduino: siArduino.path,
 }
 
 const socialPaths: Record<Exclude<SocialKey, never>, string> = {

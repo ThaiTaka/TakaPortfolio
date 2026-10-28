@@ -90,29 +90,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'dye-lms',
-    repo: 'DYE-LMS',
-    name: 'DYE-LMS',
-    category: 'Giáo dục · Hệ thống quản lý học tập',
-    tagline: 'Da Lat Young Beginners — nền tảng dạy lập trình cho học sinh THCS.',
-    role: 'Phát triển dự án (kho mã cá nhân trên GitHub)',
-    problem:
-      'Lớp lập trình thật cho học sinh cấp 2: mỗi em một tốc độ, chấm tay 30 bài Python mỗi buổi là bất khả thi, và các em dễ chán nếu chỉ có chữ.',
-    solution:
-      'Hệ thống quản lý học tập với giáo án thật, thang phân nhánh hoàn toàn tích cực, bộ chấm tự động chạy trong hộp cát Docker và ba mạch nội dung Python → Pygame → Micro:bit.',
-    features: [
-      'Chấm tự động bài Python trong hộp cát Docker',
-      'Thang phân nhánh tích cực: Cơ bản → Thử thách → Nâng cao → Mở rộng',
-      'Phân quyền theo quan hệ giữa giáo viên và học sinh',
-      'Giáo án thực tế: Python, Pygame, Micro:bit',
-    ],
-    status: 'README ghi 4 khoá học, 94 buổi, 84 bài lập trình chấm tự động và 659 test đạt.',
-    stack: ['Next.js', 'React', 'TypeScript', 'Prisma', 'PostgreSQL', 'Docker', 'Turborepo'],
-    links: [{ label: 'Xem trên GitHub', href: gh('DYE-LMS') }],
-    images: [],
-    cover: { glyph: '>>>' },
-  },
-  {
     id: 'the-call-beneath',
     repo: 'The-Call-Beneath',
     name: 'The-Call-Beneath',
@@ -135,6 +112,31 @@ export const projects: Project[] = [
     images: [
       { src: '/projects/tcb-title.png', alt: 'Màn hình tiêu đề The Call Beneath với lựa chọn độ khó theo phong cách terminal xanh lá', position: 'object-top' },
       { src: '/projects/tcb-desk.png', alt: 'Màn hình bàn làm việc với máy điện tín Morse, ngăn kéo khóa số và terminal' },
+    ],
+  },
+  {
+    id: 'infrared-blindspot',
+    repo: 'Infrared-Blindspot',
+    name: 'Infrared-Blindspot',
+    category: 'Trò chơi web · Kinh dị tâm lý',
+    tagline: 'Góc Khuất Hồng Ngoại — kinh dị tâm lý giả lập ứng dụng camera an ninh gia đình.',
+    role: 'Phát triển trò chơi (kho mã cá nhân trên GitHub)',
+    problem:
+      'Tạo một trải nghiệm kinh dị tâm lý khiến người chơi cảm giác đang dùng một ứng dụng quản lý camera an ninh thật, chạy ngay trên trình duyệt.',
+    solution:
+      'Web game 2D dựng bằng React và Vite: giao diện camera giả lập, cảnh vẽ hoàn toàn bằng CSS, nhiễu hạt bằng canvas và bộ lọc SVG, âm thanh tổng hợp bằng Web Audio — không dùng ảnh hay âm thanh bên ngoài.',
+    features: [
+      'Đổi camera, bật hồng ngoại và chụp bằng chứng bằng phím tắt',
+      'Mức bất thường tăng theo hành vi người chơi, dẫn tới cao trào',
+      'Số bằng chứng hợp lệ quyết định đoạn kết',
+      'Giao diện ba ngôn ngữ: Anh, Hàn, Việt',
+    ],
+    status: 'Bản chơi được trên trình duyệt (Vite + React). Kho mã không khai báo liên kết demo.',
+    stack: ['JavaScript', 'React', 'Vite', 'Web Audio API', 'SVG filters', 'CSS'],
+    links: [{ label: 'Xem trên GitHub', href: gh('Infrared-Blindspot') }],
+    images: [
+      { src: '/projects/ib-title.png', alt: 'Màn hình đăng nhập HOME·EYE của Infrared-Blindspot với thông báo chuyển động từ camera', position: 'object-top' },
+      { src: '/projects/ib-dashboard.png', alt: 'Bảng điều khiển camera giám sát HOME·EYE với danh sách camera, điều khiển PTZ và nhật ký hệ thống (khung hình đang tải)' },
     ],
   },
 ]
