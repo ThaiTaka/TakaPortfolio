@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 0 0% 4%;
+  --surface: 0 0% 8%;
+  --text: 0 0% 96%;
+  --muted: 0 0% 53%;
+  --stroke: 0 0% 12%;
+  --accent: 0 0% 96%;
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', serif;
+  --accent-gradient: linear-gradient(90deg, #89aacc 0%, #4e85bf 100%);
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: hsl(var(--bg));
+  }
+  body {
+    margin: 0;
+    background: hsl(var(--bg));
+    color: hsl(var(--text));
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+  ::selection {
+    background: #4e85bf;
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid #89aacc;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .accent-gradient {
+    background: var(--accent-gradient);
+  }
+  .accent-gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .font-display-italic {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .eyebrow {
+    @apply text-[0.7rem] uppercase tracking-[0.3em] text-muted;
+  }
+  .section-pad {
+    @apply px-5 py-24 sm:px-8 md:py-32 lg:px-12;
+  }
+  .container-x {
+    @apply mx-auto w-full max-w-[1400px];
+  }
+  /* Animated gradient outline revealed on hover / focus for pill buttons */
+  .gradient-outline {
+    position: relative;
+    isolation: isolate;
+  }
+  .gradient-outline::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--accent-gradient);
+    background-size: 200% 200%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .gradient-outline:hover::before,
+  .gradient-outline:focus-visible::before {
+    opacity: 1;
+    animation: gradient-shift 6s ease infinite;
+  }
+  .halftone::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1.2px);
+    background-size: 5px 5px;
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
