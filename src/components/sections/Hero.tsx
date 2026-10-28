@@ -9,7 +9,7 @@ import { SocialIcon } from '../common/TechIcon'
 // Counts come from the data files so they cannot drift from the page content.
 const prizeCount = achievements.filter((a) => a.kind === 'prize').length
 const facts = [
-  { value: '2023', label: 'Bắt đầu tham gia giảng dạy STEM' },
+  { value: '2023', label: 'Bắt đầu giảng dạy STEM và lập trình' },
   { value: String(projects.length), label: 'Dự án tiêu biểu' },
   { value: String(prizeCount), label: 'Giải thưởng' },
   { value: 'Python · C# · C++', label: 'Ngôn ngữ thế mạnh', wide: true },

@@ -61,7 +61,7 @@ Chỉ giữ hiệu ứng nhẹ: hiện dần khi cuộn (Motion), hover tinh t�
 
 ## Kiểm thử
 
-`scripts/e2e.mjs` (playwright-core + axe-core): hiển thị đầu trang ngay lập tức (ảnh, tên), LCP/CLS, tiếng Việt và các chuỗi bị loại bỏ, toàn bộ nhóm kỹ năng hiển thị không cần bấm, 5 dự án, thành tích, 5 sở thích với 5 icon khác nhau, thứ tự section, trạng thái active của navbar, bàn phím và skip link, menu mobile, liên kết/ảnh, axe (WCAG 2 A/AA + best practice), thứ bậc heading, và tràn ngang/cỡ chữ/vùng chạm ở 320/390/768/1440/1920 px. Chạy bằng giả lập trình duyệt — không thay thế kiểm thử trên thiết bị thật hay trình đọc màn hình.
+`scripts/e2e.mjs` (playwright-core + axe-core): hiển thị đầu trang ngay lập tức (ảnh, tên), LCP/CLS, tiếng Việt và các chuỗi bị loại bỏ, toàn bộ nhóm kỹ năng hiển thị không cần bấm, 6 dự án, thành tích, 5 sở thích với 5 icon khác nhau, thứ tự section, trạng thái active của navbar, bàn phím và skip link, menu mobile, liên kết/ảnh, axe (WCAG 2 A/AA + best practice), thứ bậc heading, và tràn ngang/cỡ chữ/vùng chạm ở 320/390/768/1440/1920 px. Chạy bằng giả lập trình duyệt — không thay thế kiểm thử trên thiết bị thật hay trình đọc màn hình.
 
 ## Triển khai
 

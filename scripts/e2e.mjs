@@ -98,8 +98,8 @@ for (const [w, h] of [[320, 640], [390, 844], [768, 1024], [1440, 900], [1920, 1
   ok(`hero@${w}: contact links have >=44px touch targets and verified hrefs`, m.links.length === 4 && m.links.every((l) => l.h >= 44) && m.links.map((l) => l.href).join('|') === 'mailto:lethanhthai0805@gmail.com|https://github.com/ThaiTaka|https://www.facebook.com/thai.taka.2024/|https://zalo.me/0899034349', JSON.stringify(m.links))
   ok(`hero@${w}: no clipped content`, m.clipped === 0, 'clipped=' + m.clipped)
   if (w === 1440) {
-    ok('hero: stats labels unambiguous', ['2023 Bắt đầu tham gia giảng dạy STEM', '5 Dự án tiêu biểu', '6 Giải thưởng', 'Python · C# · C++ Ngôn ngữ thế mạnh'].every((k) => m.factsText.includes(k)), m.factsText)
-    ok('hero: intro is the concise version', m.intro.startsWith('Tôi là Lê Thành Thái, sinh viên Công nghệ Thông tin tại Đại học Đà Lạt.') && m.intro.length < 260 && m.intro.includes('Từ năm 2023'), m.intro.length + ' chars')
+    ok('hero: stats labels unambiguous', ['2023 Bắt đầu giảng dạy STEM và lập trình', '6 Dự án tiêu biểu', '6 Giải thưởng', 'Python · C# · C++ Ngôn ngữ thế mạnh'].every((k) => m.factsText.includes(k)), m.factsText)
+    ok('hero: intro is the concise version', m.intro.startsWith('Tôi là Lê Thành Thái, sinh viên Công nghệ Thông tin tại Đại học Đà Lạt.') && m.intro.length < 260 && m.intro.includes('Từ năm 2023') && m.intro.includes('Python, Pygame'), m.intro.length + ' chars')
     // CTAs and social links actually work
     for (const [name, hash] of [['Xem dự án', '#projects'], ['Khám phá kỹ năng', '#skills'], ['Liên hệ', '#contact']]) {
       await page.evaluate(() => scrollTo(0, 0))
@@ -131,12 +131,12 @@ for (const [w, h] of [[320, 640], [390, 844], [768, 1024], [1440, 900], [1920, 1
     ok('removed/english: no "' + k + '"', !low.includes(k.toLowerCase()))
   ok('removed: no #explorations, no gallery columns', (await page.locator('#explorations, .parallax-stage, .col-a').count()) === 0)
   ok('removed: no navbar link to a missing section', await page.evaluate(() => [...document.querySelectorAll('nav a[href^="#"]')].every((a) => document.querySelector(a.getAttribute('href')))))
-  for (const k of ['ReadMateAI', 'AgriXAI-Farmer', 'HUIM-IPS-', 'The-Call-Beneath', 'Infrared-Blindspot']) ok('projects: ' + k, text.includes(k))
+  for (const k of ['ReadMateAI', 'AgriXAI-Farmer', 'HUIM-IPS-', 'The-Call-Beneath', 'Infrared-Blindspot', 'Hand-Tracking-main']) ok('projects: ' + k, text.includes(k))
   ok('projects: DYE-LMS removed everywhere (page text and links)', !text.includes('DYE') && !(await page.content()).includes('DYE-LMS'))
   ok('projects: ReadMateAI preview-branch note kept', text.includes('pull request #1') && text.includes('chưa hợp nhất'))
   ok('projects: The-Call-Beneath classified React/Vite, not Unity', /React/.test(text) && !/The-Call-Beneath[\s\S]{0,900}Unity[^\n]*\n/.test(text.split('Hiện trạng')[0] || ''))
-  for (const k of ['Python', 'C#', 'C++', 'Java', 'JavaScript', 'TypeScript', 'SQL', 'Scratch', 'micro:bit', 'Arduino']) ok('skills: ' + k, text.includes(k))
-  for (const k of ['Giải Nhì Nghiên cứu khoa học cấp trường', 'Giải Khuyến khích Nghiên cứu khoa học cấp tỉnh Lâm Đồng', 'Giải Nhất cuộc thi Khởi nghiệp đổi mới sáng tạo tỉnh Lâm Đồng', 'eParking', 'thành viên nhóm', 'Giải Ba cuộc thi An toàn thông tin', 'mYth00s', 'hai năm liên tiếp', 'Bắt đầu giảng dạy STEM'])
+  for (const k of ['Python', 'C#', 'C++', 'Java', 'JavaScript', 'TypeScript', 'SQL', 'Scratch', 'micro:bit', 'Arduino', 'Pygame', 'MediaPipe', 'UDP socket']) ok('skills: ' + k, text.includes(k))
+  for (const k of ['Giải Nhì Nghiên cứu khoa học cấp trường', 'Giải Khuyến khích Nghiên cứu khoa học cấp tỉnh Lâm Đồng', 'Giải Nhất cuộc thi Khởi nghiệp đổi mới sáng tạo tỉnh Lâm Đồng', 'eParking', 'thành viên nhóm', 'Giải Ba cuộc thi An toàn thông tin', 'mYth00s', 'hai năm liên tiếp', 'Bắt đầu giảng dạy STEM và lập trình Python, Pygame', 'vừa dạy STEM vừa dạy lập trình Python và Pygame'])
     ok('awards: ' + k, text.includes(k))
   ok('awards: chess prize in both 2025 and 2026', (text.match(/Giải Khuyến khích Cờ vua/g) || []).length === 2)
   ok('content: no Michael Smith / Chicago / fake stats', !/Michael Smith|Chicago|20\+ Years|95\+ Projects/.test(text))
@@ -170,7 +170,7 @@ for (const [w, h] of [[320, 640], [390, 844], [768, 1024], [1440, 900], [1920, 1
   const hidden = await page.evaluate(() => [...document.querySelectorAll('#skills li, #projects article, #awards li, #hobbies li')].filter((e) => { const cs = getComputedStyle(e); return cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0' || e.closest('[hidden],[aria-hidden=true]') }).length)
   ok('visibility: no skills/projects/awards/hobbies content hidden', hidden === 0, 'hidden=' + hidden)
   ok('projects: problem/solution/role/features visible without interaction', await page.evaluate(() => [...document.querySelectorAll('#projects article')].every((a) => ['Vai trò', 'Bài toán', 'Giải pháp', 'Tính năng nổi bật', 'Hiện trạng'].every((k) => a.innerText.toLowerCase().includes(k.toLowerCase())))))
-  ok('projects: exactly 5 cards, no modal/dialog', (await page.locator('#projects article').count()) === 5 && (await page.locator('[role=dialog]').count()) === 0)
+  ok('projects: exactly 6 cards, no modal/dialog', (await page.locator('#projects article').count()) === 6 && (await page.locator('[role=dialog]').count()) === 0)
 
   // Hobbies
   const hobbies = await page.evaluate(() => [...document.querySelectorAll('#hobbies ul li')].map((li) => ({ label: li.querySelector('h3')?.textContent, svg: li.querySelector('svg')?.innerHTML ?? '', interactive: li.querySelectorAll('a,button,[tabindex]').length })))

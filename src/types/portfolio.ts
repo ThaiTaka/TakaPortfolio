@@ -40,7 +40,7 @@ export type TechIconKey =
   | 'python' | 'javascript' | 'typescript' | 'cpp' | 'csharp' | 'java'
   | 'react' | 'nextjs' | 'vite' | 'html5' | 'css' | 'tailwind'
   | 'nodejs' | 'express' | 'fastapi' | 'postgresql' | 'supabase' | 'prisma'
-  | 'opencv' | 'scikitlearn' | 'yolo'
+  | 'opencv' | 'scikitlearn' | 'yolo' | 'mediapipe'
   | 'unity' | 'androidstudio' | 'scratch' | 'microbit' | 'arduino'
   | 'git' | 'github' | 'docker' | 'claude' | 'copilot' | 'gemini' | 'colab'
   | 'jest' | 'vitest' | 'generic'

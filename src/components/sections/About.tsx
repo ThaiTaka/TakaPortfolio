@@ -9,7 +9,7 @@ const snapshot = [
   { k: 'Họ và tên', v: profile.fullName },
   { k: 'Trường', v: profile.university },
   { k: 'Ngành', v: profile.field },
-  { k: 'Giảng dạy STEM', v: 'Từ năm 2023' },
+  { k: 'Giảng dạy', v: 'STEM, Python, Pygame · từ 2023' },
 ]
 
 export function About() {
@@ -28,8 +28,8 @@ export function About() {
                 cho đến phát triển game và các giải pháp giải quyết vấn đề thực tế.
               </p>
               <p>
-                Song song với việc xây dựng phần mềm, tôi tham gia giảng dạy STEM từ năm 2023, giúp học sinh tiếp cận lập trình và công nghệ qua
-                trải nghiệm thực hành. Công việc này cũng giúp tôi học cách giải thích và thiết kế sản phẩm rõ ràng hơn.
+                Song song với việc xây dựng phần mềm, tôi vừa giảng dạy STEM vừa dạy lập trình Python và Pygame từ năm 2023, giúp học sinh tiếp cận lập trình và
+                công nghệ qua trải nghiệm thực hành. Công việc này cũng giúp tôi học cách giải thích và thiết kế sản phẩm rõ ràng hơn.
               </p>
             </div>
             <h3 className="eyebrow mb-3 mt-8">{ui.about.values}</h3>

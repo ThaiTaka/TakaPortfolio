@@ -45,6 +45,7 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Supabase', icon: 'supabase' },
       { name: 'Prisma', icon: 'prisma' },
       { name: 'REST API' },
+      { name: 'UDP socket' },
     ],
   },
   {
@@ -56,6 +57,8 @@ export const skillGroups: SkillGroup[] = [
       { name: 'Python AI/ML', icon: 'python' },
       { name: 'Machine Learning' },
       { name: 'Computer Vision' },
+      { name: 'Hand Tracking' },
+      { name: 'MediaPipe', icon: 'mediapipe' },
       { name: 'YOLO', icon: 'yolo' },
       { name: 'OpenCV', icon: 'opencv' },
       { name: 'scikit-learn', icon: 'scikitlearn' },
@@ -81,10 +84,12 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     id: 'stem',
-    title: 'STEM và lập trình giáo dục',
+    title: 'STEM và giảng dạy lập trình',
     icon: 'cpu',
-    blurb: 'Công cụ tôi dùng khi giảng dạy lập trình và điện tử cho học sinh từ năm 2023.',
+    blurb: 'Ngôn ngữ và công cụ tôi dùng khi giảng dạy STEM và lập trình cho học sinh từ năm 2023.',
     items: [
+      { name: 'Python', icon: 'python' },
+      { name: 'Pygame', icon: 'generic' },
       { name: 'Scratch', icon: 'scratch' },
       { name: 'micro:bit', icon: 'microbit' },
       { name: 'Arduino', icon: 'arduino' },
